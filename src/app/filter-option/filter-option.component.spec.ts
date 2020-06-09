@@ -12,7 +12,7 @@ describe('FilterOptionComponent', () => {
       declarations: [FilterOptionComponent],
       imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

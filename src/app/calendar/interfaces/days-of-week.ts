@@ -1,7 +1,7 @@
 import { DayOfWeek } from './day-of-week';
 
 export const DaysOfWeek: DayOfWeek[] = [
-    { id: 0, name: 'Sunday', shortName:"Sun", highlight: false },
+    { id: 0, name: 'Sunday', shortName: "Sun", highlight: false },
     { id: 1, name: 'Monday', shortName: "Mon", highlight: true },
     { id: 2, name: 'Tuesday', shortName: "Tue", highlight: true },
     { id: 3, name: 'Wednesday', shortName: "Web", highlight: true },

@@ -6,7 +6,7 @@ export interface Day {
     day: number,
     month: number,
     year: number,
-    today?:boolean,
+    today?: boolean,
     anotherMonth?: boolean,
     schedule?: Array<any>
 }

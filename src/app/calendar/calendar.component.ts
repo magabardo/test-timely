@@ -13,28 +13,28 @@ import { CalendarUpdate, CalendarUpdateMode } from './interfaces/calendar-update
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  constructor(private apiService: ApiCalendarService, private eventEmitterService: EventEmitterService) {}
+  constructor(private apiService: ApiCalendarService, private eventEmitterService: EventEmitterService) { }
 
   daysOfWeek = DaysOfWeek;
   public calendar: Calendar;
   public selectedDate: string;
   public markDate: Date;
-  public mom:any = moment;
+  public mom: any = moment;
   public currentDate: Date;
-  public filters:string;
-  
+  public filters: string;
+
   ngOnInit(): void {
     this.switchDate(moment().toDate());
 
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeCommentFunction.subscribe((param: CalendarUpdate) => {
-        if (param.mode === CalendarUpdateMode.UPDATE_MONTH){
+        if (param.mode === CalendarUpdateMode.UPDATE_MONTH) {
           this.switchDate(moment(param.value.concat("-01"), "YYYY-MM").toDate());
-        }else{
+        } else {
           if (param.mode === CalendarUpdateMode.UPDATE_DATE) {
             this.markDate = moment(param.value, "YYYY-MM-DD").toDate();
             this.switchDate(moment(param.value.substring(0, 8).concat("01"), "YYYY-MM-DD").toDate());
-          }else{
+          } else {
             if (param.mode === CalendarUpdateMode.UPDATE_FILTER) {
               console.log("FILTER: ", param.value);
               this.filters = param.value;
@@ -46,7 +46,7 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  switchDate(date:Date){
+  switchDate(date: Date) {
     this.currentDate = date;
     let calendarData = setCalendar(date, this.markDate);
     this.selectedDate = moment(calendarData.firstDayOfMonth).format("YYYY-MM-DD");
@@ -54,13 +54,13 @@ export class CalendarComponent implements OnInit {
     params.firstDate = moment(calendarData.firstDayCalendar).format("YYYY-MM-DD");
     params.endDate = moment(calendarData.lastDayCalendar).format("YYYY-MM-DD");
     params.filter = this.filters;
-    this.apiService.getCalendar(params).subscribe((data:any) => {
+    this.apiService.getCalendar(params).subscribe((data: any) => {
       const list = data?.data?.items;
       this.calendar = buildCalendar(calendarData, list);
     });
   }
 
-  gotoAnchor(date:Date){
-    window.location.href="#" + this.mom(date).format("YYYY-MM-DD");
+  gotoAnchor(date: Date) {
+    window.location.href = "#" + this.mom(date).format("YYYY-MM-DD");
   }
 }

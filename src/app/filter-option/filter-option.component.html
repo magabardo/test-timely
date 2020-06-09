@@ -1,9 +1,10 @@
 <div class="filters">
     <h3> {{title}}</h3>
-    <ul class="contentBlock {{type}}"> 
+    <ul class="contentBlock {{type}}">
         <li *ngFor="let record of data">
-            <input type="checkbox" value="{{record.id}}" class="filter_elem filter_{{title.toLowerCase().trim()}}"/><span>{{record.title.trim()}}</span>
+            <input type="checkbox" value="{{record.id}}" class="filter_elem
+                filter_{{title.toLowerCase().trim()}}" /><span>{{record.title.trim()}}</span>
         </li>
-    </ul>    
+    </ul>
     <a href="#" (click)="resetFilters()">Reset</a>
 </div>

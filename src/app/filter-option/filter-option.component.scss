@@ -4,15 +4,15 @@
     margin: 0;
 }
 
-.contentBlock{
-    list-style-type: none;
+.contentBlock {
+    list-style-type     : none;
     height              : 200px;
     overflow-y          : auto;
     overflow-x          : hidden;
     padding             : 0px 10px 0px 10px;
     background-color    : #5f5f5f;
     padding-inline-start: 0px !important;
-    margin-bottom: 0px;
+    margin-bottom       : 0px;
 }
 
 .contentBlock input {

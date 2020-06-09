@@ -42,14 +42,14 @@ export class ToolbarComponent {
     this.titleDate = moment(this.currentDate).format("MMMM of YYYY");
     this.shortTitleDate = moment(this.currentDate).format("MM/YYYY");
     if (update)
-      this.eventEmitterService.updateCalendar({mode: 1, value: moment(date).format("YYYY-MM")});
+      this.eventEmitterService.updateCalendar({ mode: 1, value: moment(date).format("YYYY-MM") });
   }
 
   changeDateCalendar() {
-    let dtSelected:any = document.getElementById("selectedDtInput");
+    let dtSelected: any = document.getElementById("selectedDtInput");
     dtSelected = dtSelected.value;
     dtSelected = moment(dtSelected, "M/D/YYYY")
     this.setDate(dtSelected.toDate(), false);
-    this.eventEmitterService.updateCalendar({mode:2 , value: dtSelected.format("YYYY-MM-DD")});
+    this.eventEmitterService.updateCalendar({ mode: 2, value: dtSelected.format("YYYY-MM-DD") });
   }
 }

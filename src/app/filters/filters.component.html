@@ -6,16 +6,24 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="row">
-            <app-filter-option type="category" title="Categories" [data]="listCategory" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
-            <app-filter-option type="tag" title="Tags" [data]="listTag" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
-            <app-filter-option type="venue" title="Venues" [data]="listVenue" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
-            <app-filter-option type="organizer" title="Organizers" [data]="listOrganizer" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
-            <app-filter-option type="filterGroup" title="Websites" [data]="listWebsite" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
-            <app-filter-option type="filterGroup" title="Locations" [data]="listLocation" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
+            <app-filter-option type="category" title="Categories"
+                [data]="listCategory" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
+            <app-filter-option type="tag" title="Tags" [data]="listTag"
+                class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
+            <app-filter-option type="venue" title="Venues" [data]="listVenue"
+                class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
+            <app-filter-option type="organizer" title="Organizers"
+                [data]="listOrganizer" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
+            <app-filter-option type="filterGroup" title="Websites"
+                [data]="listWebsite" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
+            <app-filter-option type="filterGroup" title="Locations"
+                [data]="listLocation" class="col-md-2 col-sm-12 col-xs-12"></app-filter-option>
         </div>
         <div class="row float-right">
-            <button type="button" class="btn btn-dark btn-sm" (click)="applyFilters()">Apply Filter</button>
-            <button type="button" class="btn btn-secondary btn-sm" (click)="resetFilters()">Reset Filter</button>
+            <button type="button" class="btn btn-dark btn-sm"
+                (click)="applyFilters()">Apply Filter</button>
+            <button type="button" class="btn btn-secondary btn-sm"
+                (click)="resetFilters()">Reset Filter</button>
         </div>
     </mat-expansion-panel>
 </mat-accordion>

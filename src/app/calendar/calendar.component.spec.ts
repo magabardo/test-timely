@@ -15,11 +15,11 @@ describe('CalendarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarComponent ],
+      declarations: [CalendarComponent],
       providers: [ApiCalendarService, EventEmitterService],
       imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

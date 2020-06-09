@@ -2,22 +2,22 @@ import { Calendar } from './interfaces/calendar'
 import * as moment from 'moment';
 import { Day } from './interfaces/day';
 import { Week } from './interfaces/week';
-import {DaysOfWeek} from './interfaces/days-of-week';
+import { DaysOfWeek } from './interfaces/days-of-week';
 import { mapToMapExpression } from '@angular/compiler/src/render3/util';
 
 const DEFAULT_FORMAT: string = "YYYY-MM-DD";
 
 export const stringToDate = (strDate: string): moment.Moment => {
-    if (strDate===null) return moment();
+    if (strDate === null) return moment();
     const date = moment(strDate, "MM-DD-YYYY");
     return date;
 }
 
-export const beaultyDate = (date:moment.Moment):String => {
+export const beaultyDate = (date: moment.Moment): String => {
     return "";
 }
 
-const getToday = ():moment.Moment => {
+const getToday = (): moment.Moment => {
     return moment(moment().format(DEFAULT_FORMAT), DEFAULT_FORMAT);
 }
 
@@ -37,14 +37,14 @@ const getFirstDayOfCalendar = (month: number, year: number): Date => {
     return moment(str, DEFAULT_FORMAT).toDate();
 }
 
-const getLastDayOfCalendar = (month: number, year: number):Date => {
+const getLastDayOfCalendar = (month: number, year: number): Date => {
     const lastDate = moment(getLastDayOfMonth(month, year));
     const subtract = (6 - lastDate.weekday());
     const str = lastDate.add(subtract, 'days');
     return moment(str, DEFAULT_FORMAT).toDate();
 }
 
-const formatDate = (date: Date):string => {
+const formatDate = (date: Date): string => {
     return moment(date).format("YYYY-MM-DD");
 }
 
@@ -70,7 +70,7 @@ export const setCalendar = (dateParam: Date, markDate: Date): Calendar => {
     return calendar;
 }
 
-export const buildCalendar = (dateParam: Calendar, data:any):Calendar => {
+export const buildCalendar = (dateParam: Calendar, data: any): Calendar => {
     let date = moment(dateParam.firstDayCalendar);
     let weekNumber = 1;
     let week: Week;
@@ -96,7 +96,7 @@ export const buildCalendar = (dateParam: Calendar, data:any):Calendar => {
         };
 
         let getData = data[date.format("YYYY-MM-DD")];
-        if (getData !== undefined){
+        if (getData !== undefined) {
             days[newPosition].schedule = getData;
         }
 
@@ -104,7 +104,7 @@ export const buildCalendar = (dateParam: Calendar, data:any):Calendar => {
             days[newPosition].today = true;
         }
 
-        if (date.month() !== dateParam.month){
+        if (date.month() !== dateParam.month) {
             days[newPosition].anotherMonth = true;
         }
 
@@ -119,7 +119,7 @@ export const buildCalendar = (dateParam: Calendar, data:any):Calendar => {
         }
     }
 
-    let calendar:Calendar = dateParam;
+    let calendar: Calendar = dateParam;
     calendar.weeks = weeks;
     return calendar;
 }
