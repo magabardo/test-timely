@@ -1,0 +1,40 @@
+@import 'src/styles-base.scss';
+
+.filters>h3 {
+    margin: 0;
+}
+
+.contentBlock{
+    list-style-type: none;
+    height              : 200px;
+    overflow-y          : auto;
+    overflow-x          : hidden;
+    padding             : 0px 10px 0px 10px;
+    background-color    : #5f5f5f;
+    padding-inline-start: 0px !important;
+    margin-bottom: 0px;
+}
+
+.contentBlock input {
+    margin-right: 2px;
+}
+
+.tag {
+    border-top: 2px solid $bkcolor-tag;
+}
+
+.organizer {
+    border-top: 2px solid $bkcolor-organizer;
+}
+
+.filterGroup {
+    border-top: 2px solid $bkcolor-filterGroup;
+}
+
+.category {
+    border-top: 2px solid $bkcolor-category;
+}
+
+.venue {
+    border-top: 2px solid $bkcolor-venue;
+}

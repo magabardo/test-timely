@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-y: scroll; }
+
+@media screen and (max-width: 750px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: unset;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .desktop {
+        display: unset;
+    }
+
+    .mobile {
+        display: none;
+    }
+}

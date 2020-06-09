@@ -1,0 +1,47 @@
+@import 'src/styles-base.scss';
+
+.selectedDtInput {
+    background-color: $button-title-color;
+    border-color    : inherit;
+    width           : 0px !important;
+    border          : 0px;
+    margin          : 0 0 0 0;
+    padding         : 0 0 0 0;
+}
+
+.alignCmdTool {
+    text-align: center;
+}
+
+.bi-alarm {
+    vertical-align: top;
+    font-size     : 30px;
+}
+
+@media screen and (min-width: 401px) {
+    .showDate {
+        width: 150px;
+    }
+
+    .showDate>* {
+        font-size: 14px;
+    }
+}
+
+.logo {
+    font-size: 26px;
+    fill     : #ffffff !important;
+}
+
+.logo .mat-icon {
+    margin-top: 2px;
+}
+
+.alignCmdTool button {
+    line-height: 0;
+}
+
+.icons {
+    padding-top: 2px;
+    font-size  : 20px;
+}

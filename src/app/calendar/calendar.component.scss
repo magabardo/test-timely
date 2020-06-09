@@ -1,0 +1,193 @@
+@import 'src/styles-base.scss';
+
+.btn-primary {
+    background-color: $base-color;
+}
+
+.weekDayTitle {
+    background-color: $base-color;
+    color           : #ffffff;
+    text-align      : center;
+}
+
+.weekDayTitle>span {
+    font-weight: unset !important;
+}
+
+.day {
+    min-height : 50px;
+    border     : 1px solid #c7c7c7;
+    font-weight: bolder;
+    line-height: normal;
+}
+
+.anotherMonth {
+    background-color: #b4b4b4;
+    color           : #272727;
+    font-style      : italic;
+}
+
+.today {
+    border          : 1px solid $base-color !important;
+    background-color: #c7cbff;
+}
+
+.daySelected {
+    border          : 1px solid #630000;
+    background-color: #f39d9d;
+}
+
+.dayNumber {
+    font-size: 9px;
+}
+
+.schedule {
+    border       : 1px solid #c7cbff;
+    padding      : 2px;
+    margin-bottom: 2px;
+    border-radius: .25rem;
+}
+
+.calendar-main .mat-expansion-panel-header {
+    padding: 0 4px;
+}
+
+.calendar-main .mat-expansion-panel-header-title {
+    font-size: 10px;
+}
+
+.calendar-main .mat-expansion-panel-header-title,
+.calendar-main .mat-expansion-panel-header-description {
+    margin-right: 6px;
+}
+
+.col {
+    padding-right: 5px;
+    padding-left : 5px;
+}
+
+.previousImage {
+    width : 100%;
+    height: auto;
+}
+
+.schedTitle {
+    border-left  : 1px solid #7a7a7a;
+    margin-left  : 3px;
+    padding-left : 2px;
+    white-space  : normal;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    width        : auto;
+    height       : 45px;
+}
+
+.schedTime {
+    color: #b3b3b3
+}
+
+@media screen and (min-width: 401px) {
+    .calendar-main .mat-expansion-panel {
+        min-height: 45px !important;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .calendar-main .mat-expansion-panel {
+        min-height: 30px !important;
+    }
+}
+
+.shortDescription {
+    font-size : 12px;
+    text-align: justify;
+}
+
+.mat-chip-list {
+    margin-top: 10px;
+}
+
+.mat-chip {
+    font-size    : 11px;
+    padding      : 4px;
+    margin       : 2px !important;
+    border-radius: 10px;
+    line-height  : normal;
+}
+
+.mat-standard-chip {
+    min-height: 22px !important;
+}
+
+.mat-chip.tag {
+    background-color: $bkcolor-tag;
+}
+
+.mat-chip.organizer {
+    background-color: $bkcolor-organizer;
+}
+
+.mat-chip.filterGroup {
+    background-color: $bkcolor-filterGroup;
+}
+
+.mat-chip.category {
+    background-color: $bkcolor-category;
+}
+
+.mat-chip.venue {
+    background-color: $bkcolor-venue;
+}
+
+.scheduleMobile {
+    margin: 5px -10px 0px -10px;
+}
+
+.scheduleTitle {
+    float: left;
+}
+
+.scheduleDate {
+    background-color: #4c4d69;
+    border          : 1px solid #242431;
+    color           : #ffffff;
+    width           : 45px;
+    position: absolute;
+    margin-left: 8px;
+}
+
+.scheduleDate span {
+    width      : 100%;
+    text-align : center;
+    line-height: 13px;
+    display    : inline-block;
+    height     : 6px;
+}
+
+.card-title h2 {
+    margin        : 0px 0 0px;
+}
+
+.scheduleDateDay {
+    font-size: 16px;
+}
+
+.scheduleDateMonth {
+    font-size: 8px;
+}
+
+.scheduleDateYear {
+    font-size: 8px;
+}
+
+.scheduleImages {
+    background-color: #ffffff;
+}
+
+.scheduleDescription {
+    background-color: #ffffff;
+}
+
+.scheduleTaxonomies {
+    background-color: #ffffff;
+}

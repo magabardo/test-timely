@@ -1,0 +1,141 @@
+<calendar-toolbar selected-date={{selectedDate}}></calendar-toolbar>
+
+<div class="container-fluid calendar-main" id="calendarMain">
+
+    <!-- PRINT WEEKDAY -->
+    <div class="row">
+        <div *ngFor="let dayOfWeek of daysOfWeek" class="weekDayTitle col">
+            <span class="desktop">
+                {{dayOfWeek.name}}
+            </span>
+            <span class="mobile">
+                {{dayOfWeek.shortName}}
+            </span>
+        </div>
+    </div>
+
+    <!-- PRINT CALENDAR BODY -->
+    <div *ngIf="calendar?.weeks">
+        <div *ngFor="let weeks2 of calendar.weeks">
+            <div *ngIf="weeks2!==undefined" class="row">
+                <!-- PRINT DAYS OF WEEK -->
+                <div *ngFor="let day of weeks2.days" class="col day"
+                    [class.today]="day.today"
+                    [class.daySelected]="calendar?.markDate && mom(day.date).isSame(calendar.markDate)"
+                    [class.anotherMonth]="day.anotherMonth">
+                    <span class="dayNumber">{{day.day}}</span>
+
+                    <!-- PRINT SCHEDULES IF EXISTS-->
+                    <div *ngIf="day?.schedule">
+
+                        <!-- MOBILE VIEW -->
+                        <button type="type" (click)="gotoAnchor(day.date)" class="btn btn-primary mobile">{{day.schedule.length}}</button>
+
+                        <!-- DESKTOP VIEW -->
+                        <mat-accordion class="desktop">
+                            <mat-expansion-panel *ngFor="let sched of day.schedule" class="schedule">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <span class="schedTime">
+                                        {{mom(sched.start_datetime).format("HH:mm")}}<br/>
+                                            {{mom(sched.end_datetime).format("HH:mm")}}
+                                        </span>
+                                        <span class="schedTitle">
+                                            {{sched.title}}
+                                        </span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <mat-panel-description class="row">
+
+                                    <!-- PRINT IMAGES -->
+                                    <div *ngFor="let img of sched.images" class="col-12">
+                                        <div *ngIf="img.small">
+                                            <img src="{{img.small.url}}"
+                                                class="previousImage" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 shortDescription">
+                                        {{sched.description_short}}
+                                    </div>
+                                    
+                                    <!-- PRINT TAXONOMIES -->
+                                    <mat-chip-list aria-label="Taxonomies" *ngIf="sched.taxonomies">
+                                        <mat-chip class="category" *ngFor="let tax of sched.taxonomies.taxonomy_category">{{tax.title}}</mat-chip>
+                                        <mat-chip class="tag" *ngFor="let tax of sched.taxonomies.taxonomy_tag">{{tax.title}}</mat-chip>
+                                        <mat-chip class="venue" *ngFor="let tax of sched.taxonomies.taxonomy_venue">{{tax.title}}</mat-chip>
+                                        <mat-chip class="organizer" *ngFor="let tax of sched.taxonomies.taxonomy_organizer">{{tax.title}}</mat-chip>
+                                        <mat-chip class="filterGroup" *ngFor="let tax of sched.taxonomies.taxonomy_filter_group" color="accent">{{tax.title}}</mat-chip>
+                                    </mat-chip-list>
+                                </mat-panel-description>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRINT SCHEDULES FOR MOBILE -->
+    <div *ngIf="calendar?.weeks" class="mobile">
+        <!-- SCAN WEEKS -->
+        <div *ngFor="let weeks2 of calendar.weeks">
+            <div *ngIf="weeks2!==undefined">
+                <!-- SCAN DAYS OF WEEK -->
+                <div *ngFor="let day of weeks2.days">
+                    <!-- PRINT DAYS OF WEEK -->
+                    <div *ngFor="let sched of day.schedule" class="card scheduleMobile">
+                        
+                        <!-- PRINT SCHEDULES -->
+                        <div class="card-title">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="scheduleDate" id='{{mom(day.date).format("YYYY-MM-DD")}}'>
+                                        <span class="scheduleDateMonth">{{mom(day.date).format("MMM")}}</span><br/>
+                                        <span class="scheduleDateDay">{{mom(day.date).format("DD")}}</span><br/>
+                                        <span class="scheduleDateYear">{{mom(day.date).format("YYYY")}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    <h2>
+                                        {{sched.title}}
+                                    </h2>
+                                    <span class="scheduleHour">
+                                        {{mom(sched.start_datetime).format("HH:mm")}} ~ {{mom(sched.end_datetime).format("HH:mm")}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PRINT SHORT DESCRIPTION -->
+                        <div class="card-body scheduleDescription" *ngIf="sched.description_short">
+                            <p>
+                                {{sched.description_short}}
+                            </p>
+
+                            <!-- PRINT TAXONOMIES -->
+                            <mat-chip-list aria-label="Taxonomies" *ngIf="sched.taxonomies" class="scheduleTaxonomies">
+                                <mat-chip class="category" *ngFor="let tax of sched.taxonomies.taxonomy_category">{{tax.title}}</mat-chip>
+                                <mat-chip class="tag" *ngFor="let tax of sched.taxonomies.taxonomy_tag">{{tax.title}}</mat-chip>
+                                <mat-chip class="venue" *ngFor="let tax of sched.taxonomies.taxonomy_venue">{{tax.title}}</mat-chip>
+                                <mat-chip class="organizer" *ngFor="let tax of sched.taxonomies.taxonomy_organizer">{{tax.title}}</mat-chip>
+                                <mat-chip class="filterGroup" *ngFor="let tax of sched.taxonomies.taxonomy_filter_group" color="accent">{{tax.title}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        
+                        <!-- PRINT IMAGES -->
+                        <div class="card-img-bottom">
+                            <div *ngFor="let img of sched.images">
+                                <div *ngIf="img.small">
+                                    <img src="{{img.small.url}}"
+                                    class="previousImage" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#calendarMain">Back to Calendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
